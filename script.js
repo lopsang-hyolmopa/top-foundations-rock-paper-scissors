@@ -1,26 +1,31 @@
 function game() {
+  const buttons = document.querySelectorAll("button");
+  const scoreList = document.querySelector(".scoreList");
   let playerWins = 0;
   let computerWins = 0;
 
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = getPlayerChoice();
-    const computerSelection = getComputerChoice();
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const playerSelection = button.id;
+      const computerSelection = getComputerChoice();
+      const score = document.createElement("li");
 
-    const result = playRound(playerSelection, computerSelection);
-    console.log(result);
+      const result = playRound(playerSelection, computerSelection);
 
-    if (result.includes("win")) {
-      playerWins++;
-    } else if (result.includes("lose")) {
-      computerWins++;
-    }
-  }
+      if (result.includes("win")) {
+        playerWins++;
+      } else if (result.includes("lose")) {
+        computerWins++;
+      }
 
-  console.log(declareWinner(playerWins, computerWins));
-}
+      score.textContent = `${result} Total Score: You - ${playerWins}, Computer - ${computerWins}`;
+      scoreList.appendChild(score);
 
-function getPlayerChoice() {
-  return prompt(`Choose: "Rock", "Paper", "Scissors"`).toLocaleLowerCase();
+      if (playerWins === 5 || computerWins === 5) {
+        declareWinner(playerWins, computerWins);
+      }
+    });
+  });
 }
 
 function getComputerChoice() {
@@ -38,21 +43,21 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return "Tied!";
   } else if (winConditions[playerSelection] === computerSelection) {
-    return `You win! ${playerSelection} beats ${computerSelection}`;
+    return `You win!`;
   } else {
-    return `You lose! ${computerSelection} beats ${playerSelection}`;
+    return `You lose!`;
   }
 }
 
 function declareWinner(playerWins, computerWins) {
-  console.log(`Total scores - You: ${playerWins}, Computer: ${computerWins}`);
-  
-  if (playerWins > computerWins) {
-    return `You are the winner!`;
-  } else if (playerWins < computerWins) {
-    return `The computer is the winner!`;
-  } else {
-    return `The game has been tied!`;
+  const scoreBoard = document.querySelector(".scoreBoard");
+  const winnerMessage = document.createElement("p");
+  scoreBoard.appendChild(winnerMessage);
+
+  if (playerWins === 5) {
+    winnerMessage.textContent = `You are the winner!`;
+  } else if (computerWins === 5) {
+    winnerMessage.textContent = `The computer is the winner!`;
   }
 }
 
