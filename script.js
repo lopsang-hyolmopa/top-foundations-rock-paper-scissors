@@ -1,6 +1,9 @@
+const buttons = document.querySelectorAll("button");
+const scoreBoard = document.querySelector(".scoreBoard");
+const scoreList = document.querySelector(".scoreList");
+const WINNING_SCORE = 5
+
 function game() {
-  const buttons = document.querySelectorAll("button");
-  const scoreList = document.querySelector(".scoreList");
   let playerWins = 0;
   let computerWins = 0;
 
@@ -8,7 +11,6 @@ function game() {
     button.addEventListener("click", () => {
       const playerSelection = button.id;
       const computerSelection = getComputerChoice();
-      const score = document.createElement("li");
 
       const result = playRound(playerSelection, computerSelection);
 
@@ -18,11 +20,12 @@ function game() {
         computerWins++;
       }
 
-      score.textContent = `${result} Total Score: You - ${playerWins}, Computer - ${computerWins}`;
-      scoreList.appendChild(score);
+      updateScore(playerWins, computerWins)      
 
-      if (playerWins === 5 || computerWins === 5) {
-        declareWinner(playerWins, computerWins);
+      if (playerWins === WINNING_SCORE || computerWins === WINNING_SCORE) {
+        const winner = playerWins === 5 ? `You are the winner!` : `The computer is the winner!`;
+        declareWinner(winner)
+          restartGame();
       }
     });
   });
@@ -49,16 +52,25 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function declareWinner(playerWins, computerWins) {
-  const scoreBoard = document.querySelector(".scoreBoard");
-  const winnerMessage = document.createElement("p");
-  scoreBoard.appendChild(winnerMessage);
+function updateScore(playerWins, computerWins) {
+  const score = document.createElement("li");
+  score.textContent = `${result} Total Score: You - ${playerWins}, Computer - ${computerWins}`;
+  scoreList.appendChild(score);
+}
 
-  if (playerWins === 5) {
-    winnerMessage.textContent = `You are the winner!`;
-  } else if (computerWins === 5) {
-    winnerMessage.textContent = `The computer is the winner!`;
-  }
+function declareWinner(winner) {
+  const winnerMessage = document.createElement("p");
+  winnerMessage.textContent = winner
+  scoreBoard.appendChild(winnerMessage);
+}
+
+function restartGame() {
+  const winnerMessage = document.querySelector('p')
+
+  scoreList.innerHTML = ""
+  winnerMessage.textContent = ""
+  let playerWins = 0;
+  let computerWins = 0;
 }
 
 game();

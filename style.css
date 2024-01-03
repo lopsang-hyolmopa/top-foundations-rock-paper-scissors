@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Play", sans-serif;
+}
+
+body {
+  background-color: #222831;
+  color: #fff;
+  height: 100vh;
+}
+
+/* Header */
+header {
+  height: 20vh;
+  background-color: #111720;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header h1 {
+  font-size: 58px;
+  color: #fac650;
+}
+
+/* Game Playground */
+.gamePlayground {
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6%;
+}
+
+.heading {
+  text-align: center;
+}
+
+.heading h3 {
+  font-size: 42px;
+  margin: 36px 0 18px;
+}
+
+.heading p {
+  font-size: 28px;
+}
+
+.scoreBoard {
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+}
+
+.scoreCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.scoreCard > span {
+  font-size: 80px;
+}
+
+.btnContainer button {
+  padding: 30px 40px;
+  margin: 0 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 14px;
+  background-color: #393e46;
+}
+
+.btnContainer button:hover {
+  background-color: #4a4f57;
+}
+
+.btnContainer button > span {
+  font-size: 80px;
+}
+
+.restartGame button {
+  font-size: 28px;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 14px;
+  cursor: pointer;
+  background-color: #febbbb;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    height: 15vh;
+  }
+
+  header h1 {
+    font-size: 36px;
+  }
+
+  .heading h3 {
+    font-size: 28px;
+    margin: 32px 0 8px;
+  }
+
+  .heading p {
+    font-size: 22px;
+  }
+
+  .scoreBoard {
+    width: 100%;
+  }
+
+  .scoreCard {
+    font-size: 22px;
+  }
+
+  .scoreCard > span {
+    font-size: 50px;
+  }
+
+  .btnContainer button {
+    padding: 16px;
+    margin: 0 8px;
+  }
+
+  .btnContainer button > span {
+    font-size: 50px;
+  }
+
+  .restartGame button {
+    font-size: 22px;
+  }
+}
