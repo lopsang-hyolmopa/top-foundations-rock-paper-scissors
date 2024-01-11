@@ -1,39 +1,74 @@
-const buttons = document.querySelectorAll("button");
-const scoreBoard = document.querySelector(".scoreBoard");
-const scoreList = document.querySelector(".scoreList");
-const WINNING_SCORE = 5
+const buttons = document.querySelectorAll(".btnContainer button");
+const restartGameBtn = document.querySelector(".restart");
+const modal = document.getElementById("myModal");
+const WINNING_SCORE = 5;
+let playerWins = 0;
+let computerWins = 0;
+
+restartGameBtn.addEventListener("click", () => {
+  restartGame()
+})
 
 function game() {
-  let playerWins = 0;
-  let computerWins = 0;
+  const roundResult = document.querySelector(".heading p");
+  const playerChoice = document.querySelector(".playerChoice");
+  const scoreCountPlayer = document.querySelector(".scoreCountPlayer");
+  const scoreCountComputer = document.querySelector(".scoreCountComputer");
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       const playerSelection = button.id;
+
+      if (button.id === "rock") {
+        playerChoice.textContent = "✊";
+      } else if (button.id === "paper") {
+        playerChoice.textContent = "✋";
+      } else if (button.id === "scissors") {
+        playerChoice.textContent = "✌";
+      } else {
+        playerChoice.textContent = "?";
+      }
+
       const computerSelection = getComputerChoice();
 
       const result = playRound(playerSelection, computerSelection);
+      roundResult.textContent = result;
 
       if (result.includes("win")) {
         playerWins++;
+        scoreCountPlayer.textContent = playerWins;
       } else if (result.includes("lose")) {
         computerWins++;
+        scoreCountComputer.textContent = computerWins;
       }
 
-      updateScore(playerWins, computerWins)      
-
       if (playerWins === WINNING_SCORE || computerWins === WINNING_SCORE) {
-        const winner = playerWins === 5 ? `You are the winner!` : `The computer is the winner!`;
-        declareWinner(winner)
-          restartGame();
+        const winner =
+          playerWins === 5
+            ? `You are the winner!`
+            : `The computer is the winner!`;
+        declareWinner(winner);
       }
     });
   });
 }
 
 function getComputerChoice() {
+  const computerChoice = document.querySelector(".computerChoice");
+
   const choices = ["rock", "paper", "scissors"];
-  return choices[Math.floor(Math.random() * choices.length)];
+  finalChoice = choices[Math.floor(Math.random() * choices.length)];
+
+  if (finalChoice == "rock") {
+    computerChoice.textContent = "✊";
+  } else if ((finalChoice = "paper")) {
+    computerChoice.textContent = "✋";
+  } else if ((finalChoice = "scissors")) {
+    computerChoice.textContent = "✌";
+  } else {
+    computerChoice.textContent = "?";
+  }
+  return finalChoice;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -44,66 +79,49 @@ function playRound(playerSelection, computerSelection) {
   };
 
   if (playerSelection === computerSelection) {
-    return "Tied!";
+    return "It's tie!";
   } else if (winConditions[playerSelection] === computerSelection) {
-    return `You win!`;
+    return `You win! ${playerSelection} beats ${computerSelection}`;
   } else {
-    return `You lose!`;
+    return `You lose! ${computerSelection} beats ${playerSelection}`;
   }
 }
 
-function updateScore(playerWins, computerWins) {
-  const score = document.createElement("li");
-  score.textContent = `${result} Total Score: You - ${playerWins}, Computer - ${computerWins}`;
-  scoreList.appendChild(score);
-}
-
 function declareWinner(winner) {
-  const winnerMessage = document.createElement("p");
-  winnerMessage.textContent = winner
-  scoreBoard.appendChild(winnerMessage);
+  const closeModal = document.getElementsByClassName("close")[0];
+  const restartGameBtn = document.querySelector(".modal-content button");
+
+  modal.style.display = "block";
+  const winnerMessage = document.querySelector(".modal-content h3");
+  winnerMessage.textContent = winner;
+
+  closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+    restartGame()
+  })
+
+  restartGameBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    restartGame()
+  })
 }
 
 function restartGame() {
-  const winnerMessage = document.querySelector('p')
+  const winnerMessage = document.querySelector(".heading h3");
+  const roundResult = document.querySelector(".heading p");
+  const playerChoice = document.querySelector(".playerChoice");
+  const computerChoice = document.querySelector(".computerChoice");
+  const scoreCountPlayer = document.querySelector(".scoreCountPlayer");
+  const scoreCountComputer = document.querySelector(".scoreCountComputer");
 
-  scoreList.innerHTML = ""
-  winnerMessage.textContent = ""
-  let playerWins = 0;
-  let computerWins = 0;
+  winnerMessage.textContent = "Pick your weapon";
+  roundResult.textContent = "The player who scores 5 points first wins.";
+  playerChoice.textContent = "?"
+  computerChoice.textContent = "?"
+  scoreCountPlayer.textContent = "0"
+  scoreCountComputer.textContent = "0"
+  playerWins = 0;
+  computerWins = 0;
 }
 
 game();
-
-// function playRound(playerSelection, computerSelection) {
-//   if (playerSelection === computerSelection) {
-//     let result = "Tied";
-//     return result;
-//   } else {
-//     if (playerSelection === "rock" && computerSelection === "paper") {
-//       let result = "You lose! Paper beats Rock";
-//       return result;
-//     } else if (playerSelection === "rock" && computerSelection === "scissors") {
-//       let result = "You win! Rock beats Scissors";
-//       return result;
-//     } else if (playerSelection === "paper" && computerSelection === "rock") {
-//       let result = "You win! Paper beats Rock";
-//       return result;
-//     } else if (
-//       playerSelection === "paper" &&
-//       computerSelection === "scissors"
-//     ) {
-//       let result = "You lose! Scissors beats Paper";
-//       return result;
-//     } else if (playerSelection === "scissors" && computerSelection === "rock") {
-//       let result = "You lose! Rock beats Scissors";
-//       return result;
-//     } else if (
-//       playerSelection === "scissors" &&
-//       computerSelection === "paper"
-//     ) {
-//       let result = "You win! Scissors beats Paper";
-//       return result;
-//     }
-//   }
-// }

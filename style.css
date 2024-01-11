@@ -96,6 +96,64 @@ footer {
   font-size: 18px;
 }
 
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #222831;
+  color: #fff;
+  text-align: center;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  /* height: 20%; Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content > h3 {
+  font-size: 28px;
+  margin: 32px 0 24px;
+}
+
+.modal-content > button {
+  font-size: 28px;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 14px;
+  cursor: pointer;
+  background-color: #febbbb;
+  margin-bottom: 32px;
+}
+
+/* Media Queries */
+
 @media screen and (max-width: 480px) {
   header {
     height: 15vh;
@@ -136,6 +194,18 @@ footer {
   }
 
   .restartGame button {
+    font-size: 22px;
+  }
+
+  .modal-content {
+    width: 80%;
+  }
+
+  .modal-content > h3 {
+    font-size: 22px;
+  }
+  
+  .modal-content > button {
     font-size: 22px;
   }
 }

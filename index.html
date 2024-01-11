@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rock, Paper, Scissors (Console): TOP Foundations</title>
+    <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -17,16 +17,16 @@
     <div class="gamePlayground">
       <div class="heading">
         <h3>Pick your weapon</h3>
-      <p>The player who scores 5 points first wins.</p>
+        <p>The player who scores 5 points first wins.</p>
       </div>
       <div class="scoreBoard">
         <div class="scoreCard">
-          <span>?</span>
-          <p>You: 0</p>
+          <span class="playerChoice">?</span>
+          <p>You: <span class="scoreCountPlayer">0</span></p>
         </div>
         <div class="scoreCard">
-          <span>?</span>
-          <p>Computer: 0</p>
+          <span class="computerChoice">?</span>
+          <p>Computer: <span class="scoreCountComputer">0</span></p>
         </div>
       </div>
       <div class="btnContainer">
@@ -40,10 +40,6 @@
           <span>✌</span>
         </button>
       </div>
-      <!-- <div class="scoreBoard">
-        <h3>ScoreBoard</h3>
-        <ul class="scoreList"></ul>
-      </div> -->
       <div class="restartGame">
         <button class="restart">Restart Game</button>
       </div>
@@ -59,6 +55,15 @@
       </span>
       Lopsang Lama
     </footer>
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3></h3>
+        <button>Restart Game</button>
+      </div>
+    
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
