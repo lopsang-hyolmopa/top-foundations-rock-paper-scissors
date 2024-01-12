@@ -1,7 +1,31 @@
-# top-foundations-rock-paper-scissors
+# Rock Paper Scissors Game
 
-This is a foundations Rock, Paper Scissors game project of The Odin Project (TOP) under JS section. After completing this project, I learned fundamentals of JS such as string, array, founctions, and more. Additionally, I learned about mapping concepts while creating winConditons object. It helped me to make code more organized and easier to understand.
+Welcome to the Rock Paper Scissors game! This simple web application lets you play the classic Rock Paper Scissors game against the computer. The goal is to be the first player to score 5 points and emerge victorious.
 
-You can check out the final result of the project from the following link: https://lopsang-hyolmopa.github.io/top-foundations-rock-paper-scissors/
+## Play the Game
 
-This projec is simple console based-project. So, there is no any fancy interactions and you have to go through console section of your browser.
+👉 [Click here to play the game](https://lopsang-hyolmopa.github.io/top-foundations-rock-paper-scissors/) 👈
+
+## Features
+
+- **User-friendly Interface:** Enjoy a clean and responsive design that adapts to different screen sizes.
+- **Pick Your Weapon:** Choose between Rock (✊), Paper (✋), and Scissors (✌) by clicking on the respective buttons.
+- **Real-time Scores:** Keep track of your wins against the computer with a dynamic scoreboard.
+- **Modal Notifications:** Receive instant feedback on each round's outcome through a modal popup.
+- **Restart the Game:** Feel free to restart the game at any time with the convenient restart button.
+
+## How to Play
+
+1. Click on the Rock, Paper, or Scissors buttons to make your move.
+2. The computer will randomly select its move.
+3. The winner of each round earns a point.
+4. The first player to reach 5 points wins the game.
+
+Ready for a challenge? Play now and see if you can outsmart the computer in this timeless game of Rock Paper Scissors!
+
+## Author
+
+- **Lopsang Lama**
+- GitHub: [lopsang-hyolmopa](https://github.com/lopsang-hyolmopa)
+
+Feel free to explore the code and contribute to the project. Happy gaming! 🎮✨
