@@ -96,6 +96,15 @@ footer {
   font-size: 18px;
 }
 
+footer a {
+  text-decoration: underline;
+  color: #fff;
+}
+
+footer a:hover {
+  text-decoration: none;
+}
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -204,7 +213,7 @@ footer {
   .modal-content > h3 {
     font-size: 22px;
   }
-  
+
   .modal-content > button {
     font-size: 22px;
   }
