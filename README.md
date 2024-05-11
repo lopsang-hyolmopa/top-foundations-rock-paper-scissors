@@ -2,6 +2,8 @@
 
 Welcome to the Rock Paper Scissors game! This simple web application lets you play the classic Rock Paper Scissors game against the computer. The goal is to be the first player to score 5 points and emerge victorious.
 
+![rock paper scissors](https://github.com/lopsang-hyolmopa/top-foundations-rock-paper-scissors/assets/129128918/acc76516-a1a2-49c2-bfb1-01c1d9f5393e)
+
 ## Play the Game
 
 👉 [Click here to play the game](https://lopsang-hyolmopa.github.io/top-foundations-rock-paper-scissors/) 👈
